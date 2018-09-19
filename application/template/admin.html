@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="css/bootstrap.min.css" >
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css" >
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/ion.rangeSlider.css">
+	<link rel="stylesheet" href="css/ion.rangeSlider.skinNice.css">
+	<link rel="stylesheet" href="css/admin-main.css" >
+</head>
+<body>
+
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+			  <!--<li class="active"><a href="#">Home</a></li>-->
+				<li><button type="button" class="btn btn-danger" id="sign_out">Выход</button></li>
+			</ul>
+			<h3 class="title" >GreenBox</h3>
+		</div>
+		
+		<div class="row content">
+
+			<form class="form-horizontal">
+				<div class="form-group">
+					<div class="col-xs-12">
+						<input type="text" id="settimer" name="settimer" value="" />	
+						<button type="button" class="btn btn-warning pull-right" id="timer_send">Сохранить</button>
+					</div>
+				</div>
+			</form>
+
+			<div class="row">
+				<div class="col-sm-2 control-buttons">
+					<button type="button" class="btn btn-default">Полить</button> <br>
+					<button type="button" class="btn btn-default">Выключить лампы</button>
+					<button type="button" class="btn btn-default">Включить вентиляцию</button>
+				</div>
+				<div class="col-sm-3">Время полива</div>
+				<div class="col-sm-7"></div>
+			</div>
+		</div>
+	</div>
+
+<!--
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="input_timer_start" class="col-xs-1 control-label">
+			Включить
+		</label>
+		<div class="col-xs-1 timer_start">
+			<input type="text" class="form-control" id="i_timer_start" placeholder="01:00">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="input_timer_finish" class="col-xs-1 control-label">
+			Выключить
+		</label>
+		<div class="col-xs-1 timer_finish">
+			<input type="text" class="form-control" id="i_timer_finish" placeholder="23:30">
+		</div>
+	</div>
+
+
+</form>-->
+
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/ion.rangeSlider.min.js"></script>
+	<script src="js/moment-with-locales.js"></script>
+	<script src="js/admin-main.js"></script>
+
+	<script type="text/javascript">		
+
+	var $set_timer = $("#settimer");	
+	
+
+		$set_timer.ionRangeSlider({
+			type: "double",
+			min: -10800,
+			max: 75600,
+			from: moment('January 1, 1970 {$timer_start}').format("X"),
+			to: moment('January 1, 1970 {$timer_finish}').format("X"),
+			grid: true,
+			force_edges: true,
+			prettify: function (num) {
+				var m = moment(num, "X").locale("ru");
+				return m.format("HH:mm");
+			}
+		});	
+
+	$set_timer.on("change", function () {
+	var $this = $(this),
+		from = $this.data("from"),
+		to = $this.data("to");
+		//$('#timerto').text(moment.unix(from).format("HH:mm"));
+		//$('#timerdo').text(moment.unix(to).format("HH:mm"));
+		$('#timer_send').show();
+	});	
+	</script>
+</body>
+</html>

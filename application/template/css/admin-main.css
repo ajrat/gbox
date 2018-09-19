@@ -1,0 +1,21 @@
+body{background: #eee url('../images/bg.png');}
+html,body{
+	position: relative;
+	height: 100%;
+}
+.title{
+	color: #6ABB20;
+	text-shadow: 1px 1px 0 #ADDB44;
+}
+.content input[type="number"]{
+	width: 40px;
+}
+.form-horizontal input[type="text"]{
+	
+}
+#timer_send{
+	display: none;
+}
+.control-buttons button{
+	margin-bottom: 5px;
+}
